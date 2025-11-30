@@ -3,7 +3,18 @@ package com.jamie.domain.order.service;
 import com.jamie.domain.order.model.entity.PayOrderEntity;
 import com.jamie.domain.order.model.entity.ShopCartEntity;
 
+import java.util.List;
+
 public interface IOrderService {
 
     PayOrderEntity createOrder(ShopCartEntity shopCartEntity) throws Exception;
+
+    void changeOrderPaySuccess(String orderId);
+
+    List<String> queryNoPayNotifyOrder();
+
+    List<String> queryTimeoutCloseOrderList();
+
+    boolean changeOrderClose(String orderId);
+
 }
