@@ -30,4 +30,9 @@
         limit 1
     </select>
 
+    <update id="updateOrderPayInfo" parameterType="com.jamie.infrastructure.dao.po.PayOrder">
+        update pay_order
+        set status = #{status}, update_time = now(), pay_url = #{payUrl}
+        where order_id = #{orderId}
+    </update>
 </mapper>

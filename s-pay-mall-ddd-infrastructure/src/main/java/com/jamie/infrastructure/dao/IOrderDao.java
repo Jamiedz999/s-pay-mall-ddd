@@ -10,6 +10,6 @@ public interface IOrderDao {
 
     PayOrder queryUnPayOrder(PayOrder payOrderReq);
 
-
+    void updateOrderPayInfo(PayOrder payOrder);
 
 }

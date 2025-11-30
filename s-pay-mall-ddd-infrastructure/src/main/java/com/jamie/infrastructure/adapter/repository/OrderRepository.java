@@ -3,6 +3,7 @@ package com.jamie.infrastructure.adapter.repository;
 import com.jamie.domain.order.adapter.repository.IOrderRepository;
 import com.jamie.domain.order.model.aggregate.CreateOrderAggregate;
 import com.jamie.domain.order.model.entity.OrderEntity;
+import com.jamie.domain.order.model.entity.PayOrderEntity;
 import com.jamie.domain.order.model.entity.ProductEntity;
 import com.jamie.domain.order.model.entity.ShopCartEntity;
 import com.jamie.domain.order.model.valobj.OrderStatusVO;
@@ -60,5 +61,16 @@ public class OrderRepository implements IOrderRepository {
                 .payUrl(order.getPayUrl())
                 .build();
 
+    }
+
+    @Override
+    public void updateOrderPayInfo(PayOrderEntity payOrderEntity) {
+        PayOrder payOrderReq = PayOrder.builder()
+                .userId(payOrderEntity.getUserId())
+                .orderId(payOrderEntity.getOrderId())
+                .status(payOrderEntity.getOrderStatus().getCode())
+                .payUrl(payOrderEntity.getPayUrl())
+                .build();
+        orderDao.updateOrderPayInfo(payOrderReq);
     }
 }
